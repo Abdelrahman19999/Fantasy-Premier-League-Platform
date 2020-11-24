@@ -36,6 +36,11 @@ public class User {
 		return Email;
 	}
 	
+	public String getPassword()
+	{
+		return Password;
+	}
+	
 	public Boolean comparePassword(String enteredPassword)
 	{
 		return Password.equals(enteredPassword);
