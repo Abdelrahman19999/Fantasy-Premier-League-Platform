@@ -12,8 +12,7 @@ public class UserDaoFile implements UserDao{
 
 	private ArrayList<User> Users;
 	
-	public UserDaoFile()
-	{
+	public UserDaoFile() {
 		Users = new ArrayList<User>();
 		loadUsers();
 	}
@@ -31,6 +30,7 @@ public class UserDaoFile implements UserDao{
 	@Override
     public void addUser(User user) {
     	Users.add(user);
+    	saveUsers();
     }
 
 	@Override
