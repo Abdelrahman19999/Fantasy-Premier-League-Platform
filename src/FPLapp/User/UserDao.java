@@ -3,8 +3,9 @@ package FPLapp.User;
 import java.util.ArrayList;
 
 public interface UserDao {
-     public ArrayList<User> getAllUsers();
-     public void updateUser(User user);
-     public void addUser(User user);
-     public boolean deleteUser(User user);
+     ArrayList<User> getAllUsers();
+     void updateUser(User user);
+     void addUser(User user);
+     boolean deleteUser(User user);
+     void addUser(String newname, String newemail, String newpassword, int newID);
 }
