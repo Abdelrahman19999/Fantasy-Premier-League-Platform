@@ -41,11 +41,6 @@ public class User {
 		return Password;
 	}
 	
-	public Boolean comparePassword(String enteredPassword)
-	{
-		return Password.equals(enteredPassword);
-	}
-	
 	public int getID()
 	{
 		return ID;

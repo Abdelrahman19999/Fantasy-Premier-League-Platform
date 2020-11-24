@@ -49,6 +49,7 @@ public class UserDaoFile implements UserDao{
         try
         {
         	Users.remove(user.getID());
+        	saveUsers();
         	return true;
         }
         catch(Exception e)
