@@ -3,19 +3,12 @@ package FPLapp;
 import java.util.Scanner;
 
 public class AppManager {
-    private int option;
     private Authenticator authentic;
     private boolean allowed;
     public AppManager(){}
 
-    public int getOption() {
-        return option;
-    }
-
-    public void setOption(int option) {
-        this.option = option;
-    }
     public void run(){
+        int option;
         System.out.println("Welcome to FPL App, enter your option");
         System.out.println("1. Login to an existed account");
         System.out.println("2. Register a new FPL account");
@@ -30,6 +23,12 @@ public class AppManager {
                 break;
             default:
                 System.out.println("Invalid option.");
+        }
+        if(allowed){
+            //do functionalities
+        }
+        else {
+            // do not allow to do functionalities.. try again
         }
     }
 }
