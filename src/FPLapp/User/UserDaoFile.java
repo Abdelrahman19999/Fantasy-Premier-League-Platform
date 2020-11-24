@@ -32,6 +32,17 @@ public class UserDaoFile implements UserDao{
     	Users.add(user);
     	saveUsers();
     }
+	
+	public void addUser(String name, String email, String password, int id)
+	{
+		User user = new User();
+		user.setName(name);
+		user.setEmail(email);
+		user.setPassword(password);
+		user.setID(id);
+		Users.add(user);
+    	saveUsers();
+	}
 
 	@Override
     public boolean deleteUser(User user) {
