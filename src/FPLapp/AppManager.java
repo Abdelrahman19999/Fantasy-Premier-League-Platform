@@ -3,11 +3,13 @@ package FPLapp;
 import java.util.Scanner;
 
 public class AppManager {
-    
+
     private static Authenticator authentic;
     
     public static void run(){
+    	
     	authentic = new Authenticator();
+    	
         Scanner scanner = new Scanner(System.in);
         boolean allowed = false;
         String option;
@@ -22,7 +24,8 @@ public class AppManager {
 	            System.out.println("3. Exit");
 		        option = scanner.nextLine();
 		        switch (option) {
-		            case "1":
+		            
+		        	case "1":
 		                allowed = authentic.checkAuthority(scanner);
 		                if(allowed)
 		                {
@@ -33,6 +36,7 @@ public class AppManager {
 		                	System.out.println("\nWrong password or invalid email\n");
 		                }
 		                break;
+		            
 		            case "2":
 		                allowed = authentic.checkAvailabilty(scanner);
 		                if(allowed)
@@ -44,8 +48,10 @@ public class AppManager {
 		                	System.out.println("\nEntered email is already registered to an account\n");
 		                }
 		                break;
+		            
 		            case "3":
 		            	return;
+		            
 		            default:
 		                System.out.println("Invalid option.\n");
 		        }
@@ -55,7 +61,7 @@ public class AppManager {
         		System.out.println("Invalid option.\n");
         	}
         }
-        
+       
         scanner.close();
         
         // go to rest of program features, in different class.
