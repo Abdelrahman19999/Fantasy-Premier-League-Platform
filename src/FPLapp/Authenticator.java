@@ -36,13 +36,15 @@ public class Authenticator {
         String newemail = scanner.nextLine();
         System.out.print("Password: ");
         String newpassword = scanner.nextLine();
+        System.out.print("Favourite Team: ");
+        String newFavTeam = scanner.nextLine();
         int newID = userdata.getAllUsers().size();
         for (User user : userdata.getAllUsers()){
             if(user.getEmail().compareTo(newemail) == 0) {
                 return false;
             }
         }
-        userdata.addUser(newname, newemail, newpassword, newID);
+        userdata.addUser(newname, newemail, newpassword, newFavTeam, newID);
         return true;
     }
 }
