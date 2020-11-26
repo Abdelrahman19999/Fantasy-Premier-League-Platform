@@ -1,2 +1,2 @@
-# Fantay-Premier-League-Platform
-SWDA project
+# Fantasy-Premier-League-Platform
+SWDA assignment
