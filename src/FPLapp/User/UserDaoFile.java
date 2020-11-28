@@ -33,7 +33,7 @@ public class UserDaoFile implements UserDao{
     	saveUsers();
     }
 	
-	public void addUser(String name, String email, String password,String favTeam,  int id)
+	public void addUser(String name, String email, String password, String favTeam, int id)
 	{
 		User user = new User();
 		user.setName(name);

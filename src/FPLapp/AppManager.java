@@ -48,7 +48,7 @@ public class AppManager {
 		                String newemail = scanner.nextLine();
 		                System.out.println("Password: ");
 		                String newpassword = scanner.nextLine();
-		                System.out.print("Favourite Team: ");
+		                System.out.println("Favourite Team: ");
 		                String newfavteam = scanner.nextLine();
 		                allowed = authentic.checkAvailabilty(newname, newemail, newpassword, newfavteam);
 		                if(allowed)
