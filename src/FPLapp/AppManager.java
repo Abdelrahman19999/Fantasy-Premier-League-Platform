@@ -26,7 +26,11 @@ public class AppManager {
 		        switch (option) {
 		            
 		        	case "1":
-		                allowed = authentic.checkAuthority(scanner);
+		        		System.out.println("Email: ");
+		                String email = scanner.nextLine();
+		                System.out.println("Password: ");
+		                String password = scanner.nextLine();
+		                allowed = authentic.checkAuthority(email, password);
 		                if(allowed)
 		                {
 		                	System.out.println("\nLogged in! Welcome to FPL\n");
@@ -38,7 +42,13 @@ public class AppManager {
 		                break;
 		            
 		            case "2":
-		                allowed = authentic.checkAvailabilty(scanner);
+		            	System.out.println("Name: ");
+		                String newname = scanner.nextLine();
+		                System.out.println("Email: ");
+		                String newemail = scanner.nextLine();
+		                System.out.println("Password: ");
+		                String newpassword = scanner.nextLine();
+		                allowed = authentic.checkAvailabilty(newname, newemail, newpassword);
 		                if(allowed)
 		                {
 		                	System.out.println("\nSigned up! Welcome to FPL\n");
