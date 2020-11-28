@@ -21,14 +21,14 @@ public class Authenticator {
         return false;
     }
     
-    public boolean checkAvailabilty(String newname, String newemail, String newpassword){
+    public boolean checkAvailabilty(String newname, String newemail, String newpassword, String newfavteam){
         int newID = userdata.getAllUsers().size();
         for (User user : userdata.getAllUsers()){
             if(user.getEmail().compareTo(newemail) == 0) {
                 return false;
             }
         }
-        userdata.addUser(newname, newemail, newpassword, newID);
+        userdata.addUser(newname, newemail, newpassword, newfavteam, newID);
         return true;
     }
 }

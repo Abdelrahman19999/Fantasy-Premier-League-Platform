@@ -33,13 +33,14 @@ public class UserDaoFile implements UserDao{
     	saveUsers();
     }
 	
-	public void addUser(String name, String email, String password, int id)
+	public void addUser(String name, String email, String password,String favTeam,  int id)
 	{
 		User user = new User();
 		user.setName(name);
 		user.setEmail(email);
 		user.setPassword(password);
 		user.setID(id);
+		user.setFavTeam(favTeam);
 		Users.add(user);
 		saveUsers();
 	}
@@ -69,6 +70,7 @@ public class UserDaoFile implements UserDao{
 				user.setName(reader.nextLine());
 				user.setEmail(reader.nextLine());
 				user.setPassword(reader.nextLine());
+				user.setFavTeam(reader.nextLine());
 				user.setID(Integer.parseInt(reader.nextLine()));
 				addUser(user);
 			}
@@ -88,6 +90,7 @@ public class UserDaoFile implements UserDao{
 				fileWriter.write(user.getName() + "\n");
 				fileWriter.write(user.getEmail() + "\n");
 				fileWriter.write(user.getPassword() + "\n");
+				fileWriter.write(user.getFavTeam() + "\n");
 				fileWriter.write(user.getID() + "\n");
 			}
 			fileWriter.close();

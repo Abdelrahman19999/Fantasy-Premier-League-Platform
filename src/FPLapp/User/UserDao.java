@@ -7,5 +7,5 @@ public interface UserDao {
      void updateUser(User user);
      void addUser(User user);
      boolean deleteUser(User user);
-     void addUser(String newname, String newemail, String newpassword, int newID);
+     void addUser(String newname, String newemail, String newpassword, String favTeam , int newID);
 }
