@@ -31,4 +31,13 @@ public class Authenticator {
         userdata.addUser(newname, newemail, newpassword, newfavteam, newID);
         return true;
     }
+    
+    public User getUser(String email, String password) {
+        for(User user : userdata.getAllUsers()) {
+            if(user.getEmail().compareTo(email) == 0 && user.getPassword().compareTo(password) == 0) {
+                return user;
+            }
+        }
+        return null;
+    }
 }

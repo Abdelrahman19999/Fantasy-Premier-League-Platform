@@ -8,4 +8,5 @@ public interface PlayerDao {
      void addPlayer(Player player);
      boolean deletePlayer(Player player);
      void addPlayer(String Name, String Nationality, Position pos , String Club , int Cost , int ID);
+     Position pos_value(String s);
 }

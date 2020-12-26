@@ -1,7 +1,5 @@
 package FPLapp.Player;
 
-enum Position {GK, DF, MF, FW};
-
 public class Player {
 	private String Name;
 	private String Nationality;

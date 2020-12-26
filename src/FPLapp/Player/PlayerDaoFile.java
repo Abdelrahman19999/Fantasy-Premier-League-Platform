@@ -64,19 +64,21 @@ public class PlayerDaoFile implements PlayerDao{
 
 	public Position pos_value(String s) {
 
-		if(s=="DF")return  Position.DF ;
+		if(s=="DF")	return  Position.DF ;
 
-		if(s=="FW")return  Position.FW ;
+		if(s=="FW")	return  Position.FW ;
 
-		if(s=="GK")return  Position.GK ;
+		if(s=="GK")	return  Position.GK ;
 
-		if(s=="MF")return  Position.MF ;
+		if(s=="MF")	return  Position.MF ;
+		
+		else return null;
 	}
 
 	public void loadPlayers()
 	{
 		try {
-			File db = new File("src\\FPLapp\\Database\\Players.txt");
+			File db = new File("src\\FPLapp\\Database\\players.txt");
 			Scanner reader = new Scanner(db);
 			while(reader.hasNextLine())
 			{
@@ -99,7 +101,7 @@ public class PlayerDaoFile implements PlayerDao{
 	public void savePlayers()
 	{
 		try {
-			Writer fileWriter = new FileWriter("src\\FPLapp\\Database\\Players.txt", false);
+			Writer fileWriter = new FileWriter("src\\FPLapp\\Database\\players.txt", false);
 			for(Player player : Players)
 			{
 				fileWriter.write(player.getName() + "\n");

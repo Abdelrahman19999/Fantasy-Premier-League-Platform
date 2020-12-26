@@ -1,10 +1,23 @@
 package FPLapp;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AppManager {
 
     private static Authenticator authentic;
+    private static AppFlow appflow;
+    
+    public static void cls() {
+		try {
+			if (System.getProperty("os.name").contains("Windows"))
+				new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+			else
+				Runtime.getRuntime().exec("clear");
+		} 
+		catch (IOException | InterruptedException ex) {
+		}
+	}
     
     public static void run(){
     	
@@ -33,7 +46,9 @@ public class AppManager {
 		                allowed = authentic.checkAuthority(email, password);
 		                if(allowed)
 		                {
+		                	cls();
 		                	System.out.println("\nLogged in! Welcome to FPL\n");
+		                	appflow = new AppFlow(authentic.getUser(email, password));
 		                }
 		                else
 		                {
@@ -53,7 +68,9 @@ public class AppManager {
 		                allowed = authentic.checkAvailabilty(newname, newemail, newpassword, newfavteam);
 		                if(allowed)
 		                {
+		                	cls();
 		                	System.out.println("\nSigned up! Welcome to FPL\n");
+		                	appflow = new AppFlow(authentic.getUser(newemail, newpassword));
 		                }
 		                else
 		                {
@@ -73,10 +90,46 @@ public class AppManager {
         		System.out.println("Invalid option.\n");
         	}
         }
-       
-        scanner.close();
         
-        // go to rest of program features, in different class.
+        do
+        {
+        	System.out.println("1- Add new player to the system\n");
+        	System.out.println("2- Create new squad\n");
+        	System.out.println("3- Exit\n\n");
+        	System.out.println("Enter your choice: ");
+        	option = scanner.nextLine();
+        	
+        	switch(option)
+        	{
+        		case "1":
+        			System.out.println("Name: ");
+        	        String name = scanner.nextLine();
+        	        System.out.println("Nationality: ");
+        	        String nationality = scanner.nextLine();
+        	        System.out.println("Club: ");
+        	        String club = scanner.nextLine();
+        	        System.out.println("Position (GK - DF - FW - MF): ");
+        	        String pos = scanner.nextLine();
+        	        System.out.println("Initial Cost: ");
+        	        int cost = Integer.parseInt(scanner.nextLine());
+        			if(appflow.addNewPlayer(name, nationality, pos , club , cost))
+        			{
+        				System.out.println("Player successfully added!\n\n");
+        			}
+        			else
+        			{
+        				System.out.println("Invalid info.\n\n");
+        			}
+        			break;
+        		case "2":
+        			// squad
+        			break;
+        		default:
+	                System.out.println("Invalid option.\n");
+        	}
+        }
+        while(option.compareTo("3") != 0);
+        
     }
     
     public static void main(String[] args) {
