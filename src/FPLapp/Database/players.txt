@@ -1,0 +1,18 @@
+messi
+argentina
+FW
+barcelona
+100
+0
+ronaldo
+brazilian
+FW
+barcelona
+100
+1
+mohammad salah
+egyptian
+FW
+liverpool
+120
+2
