@@ -122,7 +122,7 @@ public class AppManager {
         			}
         			break;
         		case "2":
-        			// squad
+					appflow.addSquad();
         			break;
         		case "3":
         			break;

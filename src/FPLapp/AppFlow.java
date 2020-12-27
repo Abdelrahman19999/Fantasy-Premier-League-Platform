@@ -4,22 +4,40 @@ import FPLapp.Player.Player;
 import FPLapp.Player.PlayerDao;
 import FPLapp.Player.PlayerDaoFile;
 import FPLapp.Player.Position;
+import FPLapp.Squad.Squad;
 import FPLapp.User.User;
+
+import java.util.Scanner;
 
 public class AppFlow {
 	
 	private User loggedUser;
 	private PlayerDao playerdata;
-	
 	public AppFlow(User user)
 	{
 		loggedUser = user;
 		playerdata = new PlayerDaoFile();
 	}
-	
-	public void perform() {};
-	
-	public void addSquad() {};
+
+	public void addSquad() {
+		if(loggedUser.HasSquad()){
+			System.out.println("User already has one squad!");
+			return;
+		}
+		else{
+			loggedUser.setHasSquad(true);
+			Squad squad = new Squad();
+			for(Player player : playerdata.getAllPlayers()){
+				System.out.println(player.getID() + "-" + player.getName() + "("+player.getPos()+")");
+			}
+			for(int i = 0; i < 15; i++){
+				System.out.println("Enter player("+(i+1)+") ID to add to your squad: ");
+				Scanner scanner = new Scanner(System.in);
+				int id = Integer.parseInt(scanner.nextLine());
+				squad.addPlayer(playerdata.getAllPlayers().get(id));
+			}
+		}
+	}
 	
 	public boolean addNewPlayer(String Name, String Nationality, String pos , String Club , int Cost)
 	{

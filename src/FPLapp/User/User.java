@@ -1,11 +1,16 @@
 package FPLapp.User;
 
+import FPLapp.Squad.Squad;
+
 public class User {
 	private String Name;
 	private String Email;
 	private String Password;
 	private String favTeam;
 	private int ID;
+	private Squad squad;
+	private boolean hasSquad = false;
+
 	public void setName(String Name)
 	{
 		this.Name = Name;
@@ -30,7 +35,15 @@ public class User {
 	{
 		this.ID = ID;
 	}
-	
+
+	public void setSquad(Squad squad) {
+		this.squad = squad;
+	}
+
+	public void setHasSquad(boolean hasSquad) {
+		this.hasSquad = hasSquad;
+	}
+
 	public String getName()
 	{
 		return Name;
@@ -55,5 +68,11 @@ public class User {
 	{
 		return ID;
 	}
-	
+
+	public Squad getSquad() {
+		return squad;
+	}
+	public boolean HasSquad() {
+		return hasSquad;
+	}
 }
