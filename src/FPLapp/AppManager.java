@@ -124,11 +124,16 @@ public class AppManager {
         		case "2":
         			// squad
         			break;
+        		case "3":
+        			break;
         		default:
 	                System.out.println("Invalid option.\n");
+	                break;
         	}
         }
         while(option.compareTo("3") != 0);
+        
+        scanner.close();
         
     }
     

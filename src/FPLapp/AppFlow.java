@@ -27,10 +27,11 @@ public class AppFlow {
 		player.setName(Name);
 		player.setNationality(Nationality);
 		Position position = playerdata.pos_value(pos);
-		if(position == null) return false;
+		if(position == null) {System.out.println("null"); return false;}
 		else player.setPos(position);
 		player.setCost(Cost);
-		playerdata.addPlayer(player);
+		int newID = playerdata.getAllPlayers().size();
+		playerdata.addPlayer(Name, Nationality, position, Club, Cost, newID);
 		return true;
 	}
 

@@ -64,13 +64,13 @@ public class PlayerDaoFile implements PlayerDao{
 
 	public Position pos_value(String s) {
 
-		if(s=="DF")	return  Position.DF ;
+		if(s.compareTo("DF") == 0)	return  Position.DF ;
 
-		if(s=="FW")	return  Position.FW ;
+		if(s.compareTo("FW") == 0)	return  Position.FW ;
 
-		if(s=="GK")	return  Position.GK ;
+		if(s.compareTo("GK") == 0)	return  Position.GK ;
 
-		if(s=="MF")	return  Position.MF ;
+		if(s.compareTo("MF") == 0)	return  Position.MF ;
 		
 		else return null;
 	}
