@@ -1,18 +1,66 @@
-messi
-argentina
+Cavani
+Uruguay
 FW
-barcelona
-100
+Manchester United
+8
 0
-ronaldo
-brazilian
-FW
-barcelona
-100
+Son
+South Korea
+MF
+Tottenham
+9
 1
-mohammad salah
-egyptian
+Bamford
+England
 FW
-liverpool
-120
+Leeds United
+6
 2
+Chilwell
+England
+DF
+Chelsea
+5
+3
+De Gea
+Spain
+GK
+Manchester United
+3
+4
+Salah
+Egypt
+MF
+Liverpool
+9
+5
+Fernandes
+Protugal
+MF
+Manchester United
+7
+6
+Justin
+England
+DF
+Leicester City
+4
+7
+Cresswell
+England
+DF
+West Ham United
+5
+8
+McCarthy
+England
+GK
+Southampton
+4
+9
+Wilson
+England
+FW
+Newcastle United
+6
+10
