@@ -10,7 +10,7 @@ public class SquadDaoFile implements SquadDao{
     ArrayList<Squad> Squads;
 
     public SquadDaoFile(){
-        Squads = new ArrayList<Squad>();
+        Squads = new ArrayList<>();
         loadSquads();
     }
     @Override
@@ -21,12 +21,12 @@ public class SquadDaoFile implements SquadDao{
     @Override
     public void updateSquad(Squad squad) {
         Squads.set(squad.getID(), squad);
+        saveSquads();
     }
 
     @Override
     public void addSquad(Squad squad) {
         Squads.add(squad);
-        saveSquads();
     }
 
     @Override
@@ -44,11 +44,13 @@ public class SquadDaoFile implements SquadDao{
     }
 
     @Override
-    public void addSquad(String userEmail, String Name , ArrayList<Player> playersList) {
+    public void addSquad(String userEmail, String Name , double initValue,ArrayList<Player> playersList) {
         Squad squad = new Squad();
         squad.setName(Name);
         squad.setOwner(userEmail);
         squad.setPlayers(playersList);
+        squad.setInitValue(initValue);
+        addSquad(squad);
         saveSquads();
     }
     public void loadSquads()
@@ -61,7 +63,12 @@ public class SquadDaoFile implements SquadDao{
                 Squad squad = new Squad();
                 squad.setOwner(reader.nextLine());
                 squad.setName(reader.nextLine());
-                squad.setTotalValue(Double.parseDouble(reader.nextLine()));
+                squad.setInitValue(Double.parseDouble(reader.nextLine()));
+                for(int i = 0; i < 15; i++) {
+                    String s = reader.nextLine();
+                    System.out.println(s);
+                    squad.setPlayer(s);
+                }
                 addSquad(squad);
             }
             reader.close();
@@ -79,7 +86,7 @@ public class SquadDaoFile implements SquadDao{
             {
                 fileWriter.write(squad.getOwner() + "\n");
                 fileWriter.write(squad.getName() + "\n");
-                fileWriter.write(squad.getTotalValue() + "\n");
+                fileWriter.write(squad.getInitValue() + "\n");
                 for(Player player : squad.getPlayers()){
                     fileWriter.write(player.getName() + "\t");
                     fileWriter.write(String.valueOf(player.getPos()) + "\n");

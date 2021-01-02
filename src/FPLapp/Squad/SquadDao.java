@@ -9,5 +9,5 @@ public interface SquadDao {
     void updateSquad(Squad squad);
     void addSquad(Squad squad);
     boolean deleteSquad(Squad squad);
-    void addSquad(String userEmail, String Name, ArrayList<Player> playersList);
+    void addSquad(String userEmail, String Name, double initValue, ArrayList<Player> playersList);
 }

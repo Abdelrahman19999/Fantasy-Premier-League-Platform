@@ -2,24 +2,29 @@ Bob
 bob@bob.bob
 bobbob
 Chelsea
+false
 0
 Rob
 rob@rob.rob
 robrob
 Fulham
+false
 1
 hob
 hob@hob.hob
 hobhob
 Liverpool
+false
 2
 omar ahmed
 omar@yahoo.com
 omar1212
 Arsenal
+false
 3
 Ali
 al24@yahoo.com
 ali24
 Manchester United
+false
 4

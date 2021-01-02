@@ -32,7 +32,6 @@ public class PlayerDaoFile implements PlayerDao{
 	@Override
     public void addPlayer(Player player) {
     	Players.add(player);
-    	savePlayers();
     }
 
 	public void addPlayer(String Name, String Nationality, Position pos , String Club , int Cost , int ID)

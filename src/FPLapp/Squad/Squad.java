@@ -1,5 +1,8 @@
 package FPLapp.Squad;
 import FPLapp.Player.Player;
+import FPLapp.Player.PlayerDao;
+import FPLapp.Player.PlayerDaoFile;
+
 import java.util.ArrayList;
 
 public class Squad {
@@ -54,6 +57,13 @@ public class Squad {
         }
         else
             return false;
+    }
+    public void setPlayer(String playerName){
+        PlayerDao playerDao = new PlayerDaoFile();
+        for (Player p : playerDao.getAllPlayers()){
+            if(p.getName().compareTo(playerName) == 0)
+                this.addPlayer(p);
+        }
     }
     public void removePlayer(Player p){
         players.remove(p);
@@ -110,5 +120,9 @@ public class Squad {
 
     public int getID() {
         return ID;
+    }
+
+    public void setInitValue(double value) {
+        initValue = value;
     }
 }

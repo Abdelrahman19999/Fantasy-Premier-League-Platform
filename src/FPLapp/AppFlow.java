@@ -5,18 +5,22 @@ import FPLapp.Player.PlayerDao;
 import FPLapp.Player.PlayerDaoFile;
 import FPLapp.Player.Position;
 import FPLapp.Squad.Squad;
+import FPLapp.Squad.SquadDao;
+import FPLapp.Squad.SquadDaoFile;
 import FPLapp.User.User;
+import FPLapp.User.UserDao;
+import FPLapp.User.UserDaoFile;
 
 import java.util.Scanner;
 
 public class AppFlow {
 	
 	private User loggedUser;
-	private PlayerDao playerdata;
+	private PlayerDao playersList = new PlayerDaoFile();
+	private SquadDao squadDao;
 	public AppFlow(User user)
 	{
 		loggedUser = user;
-		playerdata = new PlayerDaoFile();
 	}
 
 	public void addSquad() {
@@ -25,9 +29,9 @@ public class AppFlow {
 			return;
 		}
 		else{
-			loggedUser.setHasSquad(true);
+			loggedUser.setHasSquad("true");
 			Squad squad = new Squad();
-			for(Player player : playerdata.getAllPlayers()){
+			for(Player player : playersList.getAllPlayers()){
 				System.out.println(player.getID() + "-" + player.getName() + "("+player.getPos()+")");
 			}
 			for(int i = 0; i < 15; i++){
@@ -40,16 +44,20 @@ public class AppFlow {
 				catch (Exception e){
 					System.out.println("Please enter a valid number");
 				}
-				while(!squad.addPlayer(playerdata.getAllPlayers().get(id))){
+				while(!squad.addPlayer(playersList.getAllPlayers().get(id))){
 					System.out.println("Cannot add player, please choose another player");
 					try {
 						id = Integer.parseInt(scanner.nextLine());
 					}
-					catch (Exception e){
-						System.out.println("Please enter a valid number");
-					}
+					catch (Exception ignored){ }
 				}
 			}
+			squad.setOwner(loggedUser.getEmail());
+			squad.setName(loggedUser.getName() + "'s Squad");
+			squadDao = new SquadDaoFile();
+			squadDao.addSquad(squad.getOwner(), squad.getName(), squad.getInitValue(), squad.getPlayers());
+			UserDao userDao = new UserDaoFile();
+			userDao.updateUser(loggedUser);
 		}
 	}
 	
@@ -58,12 +66,12 @@ public class AppFlow {
 		Player player = new Player();
 		player.setName(Name);
 		player.setNationality(Nationality);
-		Position position = playerdata.pos_value(pos);
+		Position position = playersList.pos_value(pos);
 		if(position == null) {System.out.println("null"); return false;}
 		else player.setPos(position);
 		player.setCost(Cost);
-		int newID = playerdata.getAllPlayers().size();
-		playerdata.addPlayer(Name, Nationality, position, Club, Cost, newID);
+		int newID = playersList.getAllPlayers().size();
+		playersList.addPlayer(Name, Nationality, position, Club, Cost, newID);
 		return true;
 	}
 

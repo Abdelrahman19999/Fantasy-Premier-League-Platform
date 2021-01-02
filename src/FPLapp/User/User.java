@@ -15,12 +15,12 @@ public class User {
 	{
 		this.Name = Name;
 	}
-	
+
 	public void setEmail(String Email)
 	{
 		this.Email = Email;
 	}
-	
+
 	public void setPassword(String Password)
 	{
 		this.Password = Password;
@@ -30,7 +30,7 @@ public class User {
 	{
 		this.favTeam = favTeam;
 	}
-	
+
 	public void setID(int ID)
 	{
 		this.ID = ID;
@@ -44,16 +44,20 @@ public class User {
 		this.hasSquad = hasSquad;
 	}
 
+	public void setHasSquad(String hasSquad) {
+		this.hasSquad = hasSquad.equals("true") ? true : false;
+	}
+
 	public String getName()
 	{
 		return Name;
 	}
-	
+
 	public String getEmail()
 	{
 		return Email;
 	}
-	
+
 	public String getPassword()
 	{
 		return Password;
