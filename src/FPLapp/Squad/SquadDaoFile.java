@@ -49,6 +49,7 @@ public class SquadDaoFile implements SquadDao{
         squad.setName(Name);
         squad.setOwner(userEmail);
         squad.setPlayers(playersList);
+        saveSquads();
     }
     public void loadSquads()
     {

@@ -1,6 +1,5 @@
 package FPLapp.Squad;
 import FPLapp.Player.Player;
-import FPLapp.User.User;
 import java.util.ArrayList;
 
 public class Squad {
@@ -9,14 +8,15 @@ public class Squad {
     private double totalValue = 100.0;
     private String owner;
     private int ID;
-    private ArrayList<Player> players;
+    private ArrayList<Player> players = new ArrayList<>();
 
     protected boolean isApplicable(Player p){
         if(p.getCost() + initValue > totalValue)
             return false;
-        else if(players.size() >= 15)
+        else if (players.size() >= 15)
             return false;
         else {
+
             String pClub = p.getClub();
             int cnt = 0;
             int posCnt = 0;
@@ -28,14 +28,18 @@ public class Squad {
                 if(player.getPos().compareTo(p.getPos()) == 0){
                     posCnt++;
                 }
+                if(player.getName().compareTo(p.getName()) == 0) {
+                    return false;
+                }
             }
             switch (p.getPos()){
                 case GK:
                     if(posCnt >= 2) return false;
+                    break;
                 case DF:
-                    if(posCnt >= 5) return false;
                 case MF:
                     if(posCnt >= 5) return false;
+                    break;
                 case FW:
                     if(posCnt >= 3) return false;
             }
@@ -52,8 +56,7 @@ public class Squad {
             return false;
     }
     public void removePlayer(Player p){
-        if(players.contains(p))
-            players.remove(p);
+        players.remove(p);
     }
     public boolean replacePlayer(Player pold, Player pnew){
         removePlayer(pold);

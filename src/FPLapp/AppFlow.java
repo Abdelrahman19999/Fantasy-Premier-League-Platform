@@ -33,8 +33,22 @@ public class AppFlow {
 			for(int i = 0; i < 15; i++){
 				System.out.println("Enter player("+(i+1)+") ID to add to your squad: ");
 				Scanner scanner = new Scanner(System.in);
-				int id = Integer.parseInt(scanner.nextLine());
-				squad.addPlayer(playerdata.getAllPlayers().get(id));
+				int id = -1;
+				try {
+					id = Integer.parseInt(scanner.nextLine());
+				}
+				catch (Exception e){
+					System.out.println("Please enter a valid number");
+				}
+				while(!squad.addPlayer(playerdata.getAllPlayers().get(id))){
+					System.out.println("Cannot add player, please choose another player");
+					try {
+						id = Integer.parseInt(scanner.nextLine());
+					}
+					catch (Exception e){
+						System.out.println("Please enter a valid number");
+					}
+				}
 			}
 		}
 	}
