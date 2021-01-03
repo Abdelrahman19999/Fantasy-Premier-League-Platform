@@ -58,7 +58,7 @@ public class Squad {
         else
             return false;
     }
-    rotected void reloadPlayer(Player p){
+    protected void reloadPlayer(Player p){
         players.add(p);
     }
     public void setPlayer(String playerName){
