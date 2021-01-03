@@ -62,7 +62,7 @@ public class UserDaoFile implements UserDao{
 	public void loadUsers()
 	{
 		try {
-			File db = new File("src\\FPLapp\\Database\\db.txt");
+			File db = new File("src\\FPLapp\\Database\\users.txt");
 			Scanner reader = new Scanner(db);
 			while(reader.hasNextLine())
 			{
@@ -85,7 +85,7 @@ public class UserDaoFile implements UserDao{
 	public void saveUsers()
 	{
 		try {
-			Writer fileWriter = new FileWriter("src\\FPLapp\\Database\\db.txt", false);
+			Writer fileWriter = new FileWriter("src\\FPLapp\\Database\\users.txt", false);
 			for(User user : Users)
 			{
 				fileWriter.write(user.getName() + "\n");
