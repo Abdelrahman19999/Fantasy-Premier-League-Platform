@@ -22,7 +22,7 @@ false
 omar ahmed
 omar@yahoo.com
 omar1212
-coach
+admin
 Arsenal
 true
 3

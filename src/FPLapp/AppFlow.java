@@ -81,6 +81,7 @@ public class AppFlow {
 		for(User user : userDao.getAllUsers()){
 			if(user.getEmail().compareTo(email) == 0){
 				user.setRole("admin");
+				userDao.updateUser(user);
 				break;
 			}
 		}
