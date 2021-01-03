@@ -91,46 +91,66 @@ public class AppManager {
         	}
         }
         
-        do
-        {
-        	System.out.println("1- Add new player to the system\n");
-        	System.out.println("2- Create new squad\n");
-        	System.out.println("3- Exit\n\n");
-        	System.out.println("Enter your choice: ");
-        	option = scanner.nextLine();
-        	
-        	switch(option)
-        	{
-        		case "1":
-        			System.out.println("Name: ");
-        	        String name = scanner.nextLine();
-        	        System.out.println("Nationality: ");
-        	        String nationality = scanner.nextLine();
-        	        System.out.println("Club: ");
-        	        String club = scanner.nextLine();
-        	        System.out.println("Position (GK - DF - FW - MF): ");
-        	        String pos = scanner.nextLine();
-        	        System.out.println("Initial Cost: ");
-        	        int cost = Integer.parseInt(scanner.nextLine());
-        			if(appflow.addNewPlayer(name, nationality, pos , club , cost))
-        			{
-        				System.out.println("Player successfully added!\n\n");
-        			}
-        			else
-        			{
-        				System.out.println("Invalid info.\n\n");
-        			}
-        			break;
-        		case "2":
-					appflow.addSquad();
-        			break;
-        		case "3":
-        			break;
-        		default:
-	                System.out.println("Invalid option.\n");
-	                break;
-        	}
-        }
+        do {
+			if (appflow.getLoggedUser().getRole().compareTo("coach") == 0) {
+				System.out.println("1- Add new player to the system\n");
+				System.out.println("2- Create new squad\n");
+				/*...view squad score option...*/
+				System.out.println("3- Exit\n\n");
+				System.out.println("Enter your choice: ");
+				option = scanner.nextLine();
+
+				switch (option) {
+					case "1":
+						System.out.println("Name: ");
+						String name = scanner.nextLine();
+						System.out.println("Nationality: ");
+						String nationality = scanner.nextLine();
+						System.out.println("Club: ");
+						String club = scanner.nextLine();
+						System.out.println("Position (GK - DF - FW - MF): ");
+						String pos = scanner.nextLine();
+						System.out.println("Initial Cost: ");
+						int cost = Integer.parseInt(scanner.nextLine());
+						if (appflow.addNewPlayer(name, nationality, pos, club, cost)) {
+							System.out.println("Player successfully added!\n\n");
+						} else {
+							System.out.println("Invalid info.\n\n");
+						}
+						break;
+					case "2":
+						appflow.addSquad();
+						break;
+					case "3":
+						break;
+					default:
+						System.out.println("Invalid option.\n");
+						break;
+				}
+			}
+			else{
+				System.out.println("1- Add new event\n");
+				System.out.println("2- Add new admin\n");
+				System.out.println("3- Exit\n\n");
+				System.out.println("Enter your choice: ");
+				option = scanner.nextLine();
+				switch(option){
+					case "1":
+						//appflow.addEvent();
+						break;
+					case "2":
+						System.out.println("please enter user email:");
+						String email = scanner.nextLine();
+						appflow.addNewAdmin(email);
+						break;
+					case "3":
+						break;
+					default:
+						System.out.println("Invalid option.\n");
+						break;
+				}
+			}
+		}
         while(option.compareTo("3") != 0);
         
         scanner.close();

@@ -10,6 +10,15 @@ public class User {
 	private int ID;
 	private Squad squad;
 	private boolean hasSquad = false;
+	private String role = "coach";
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	public void setName(String Name)
 	{

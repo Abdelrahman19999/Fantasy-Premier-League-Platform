@@ -1,30 +1,35 @@
 Bob
 bob@bob.bob
 bobbob
+coach
 Chelsea
 true
 0
 Rob
 rob@rob.rob
 robrob
+coach
 Fulham
 false
 1
 hob
 hob@hob.hob
 hobhob
+coach
 Liverpool
 false
 2
 omar ahmed
 omar@yahoo.com
 omar1212
+coach
 Arsenal
 true
 3
 Ali
-al24@yahoo.com
+ali@yahoo.com
 ali24
+admin
 Manchester United
 false
 4

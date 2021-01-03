@@ -14,7 +14,8 @@ import FPLapp.User.UserDaoFile;
 import java.util.Scanner;
 
 public class AppFlow {
-	
+
+
 	private User loggedUser;
 	private PlayerDao playersList = new PlayerDaoFile();
 	private SquadDao squadDao;
@@ -73,6 +74,24 @@ public class AppFlow {
 		int newID = playersList.getAllPlayers().size();
 		playersList.addPlayer(Name, Nationality, position, Club, Cost, newID);
 		return true;
+	}
+
+	public void addNewAdmin(String email){
+		UserDao userDao = new UserDaoFile();
+		for(User user : userDao.getAllUsers()){
+			if(user.getEmail().compareTo(email) == 0){
+				user.setRole("admin");
+				break;
+			}
+		}
+	}
+
+	public User getLoggedUser() {
+		return loggedUser;
+	}
+
+	public void setLoggedUser(User loggedUser) {
+		this.loggedUser = loggedUser;
 	}
 
 }

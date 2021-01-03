@@ -70,6 +70,7 @@ public class UserDaoFile implements UserDao{
 				user.setName(reader.nextLine());
 				user.setEmail(reader.nextLine());
 				user.setPassword(reader.nextLine());
+				user.setRole(reader.nextLine());
 				user.setFavTeam(reader.nextLine());
 				user.setHasSquad(reader.nextLine());
 				user.setID(Integer.parseInt(reader.nextLine()));
@@ -91,6 +92,7 @@ public class UserDaoFile implements UserDao{
 				fileWriter.write(user.getName() + "\n");
 				fileWriter.write(user.getEmail() + "\n");
 				fileWriter.write(user.getPassword() + "\n");
+				fileWriter.write(user.getRole() + "\n");
 				fileWriter.write(user.getFavTeam() + "\n");
 				if(user.HasSquad())
 					fileWriter.write("true" + "\n");
