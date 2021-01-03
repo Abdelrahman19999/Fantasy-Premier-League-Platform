@@ -2,7 +2,7 @@ Bob
 bob@bob.bob
 bobbob
 Chelsea
-false
+true
 0
 Rob
 rob@rob.rob
@@ -20,7 +20,7 @@ omar ahmed
 omar@yahoo.com
 omar1212
 Arsenal
-false
+true
 3
 Ali
 al24@yahoo.com

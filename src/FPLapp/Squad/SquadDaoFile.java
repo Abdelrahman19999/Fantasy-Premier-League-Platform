@@ -66,8 +66,10 @@ public class SquadDaoFile implements SquadDao{
                 squad.setInitValue(Double.parseDouble(reader.nextLine()));
                 for(int i = 0; i < 15; i++) {
                     String s = reader.nextLine();
-                    System.out.println(s);
-                    squad.setPlayer(s);
+                    String[] words = s.split("\\s+");
+                    String position = words[words.length - 1];
+                    String pName = s.substring(0,s.indexOf(position)).trim();
+                    squad.setPlayer(pName);
                 }
                 addSquad(squad);
             }

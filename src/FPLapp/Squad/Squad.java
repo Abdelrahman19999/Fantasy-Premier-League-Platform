@@ -58,11 +58,14 @@ public class Squad {
         else
             return false;
     }
+    rotected void reloadPlayer(Player p){
+        players.add(p);
+    }
     public void setPlayer(String playerName){
         PlayerDao playerDao = new PlayerDaoFile();
         for (Player p : playerDao.getAllPlayers()){
             if(p.getName().compareTo(playerName) == 0)
-                this.addPlayer(p);
+                this.reloadPlayer(p);
         }
     }
     public void removePlayer(Player p){
