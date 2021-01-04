@@ -50,6 +50,11 @@ public class UserDaoFile implements UserDao{
         try
         {
         	Users.remove(user.getID());
+        	int size = Users.size();
+        	for(int id = 1; id <= size; id++)
+        	{
+        		Users.get(id).setID(id);
+        	}
         	saveUsers();
         	return true;
         }

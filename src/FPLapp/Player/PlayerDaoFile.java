@@ -52,6 +52,11 @@ public class PlayerDaoFile implements PlayerDao{
         try
         {
         	Players.remove(player.getID());
+        	int size = Players.size();
+        	for(int id = 1; id <= size; id++)
+        	{
+        		Players.get(id).setID(id);
+        	}
         	savePlayers();
         	return true;
         }

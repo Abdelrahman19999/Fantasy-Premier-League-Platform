@@ -36,7 +36,7 @@ public class AppFlow {
 				System.out.println(player.getID() + "-" + player.getName() + "("+player.getPos()+")");
 			}
 			for(int i = 0; i < 15; i++){
-				System.out.println("Enter player("+(i+1)+") ID to add to your squad: ");
+				System.out.println("Enter player ("+(i+1)+") ID to add to your squad: ");
 				Scanner scanner = new Scanner(System.in);
 				int id = -1;
 				try {
