@@ -11,18 +11,12 @@ public class Squad {
     private int ID;
     private ArrayList<Player> players = new ArrayList<>();
 
-    protected void reloadPlayer(Player p){
-        players.add(p);
-    }
     public void setPlayer(String playerName){
         PlayerDao playerDao = new PlayerDaoFile();
         for (Player p : playerDao.getAllPlayers()){
             if(p.getName().compareTo(playerName) == 0)
-                this.reloadPlayer(p);
+                this.players.add(p);
         }
-    }
-    public void removePlayer(Player p){
-        players.remove(p);
     }
 
     public void setName(String name) {
