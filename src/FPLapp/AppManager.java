@@ -140,8 +140,8 @@ public class AppManager {
         	}
         }
         
-        do {
-			if (appflow.getLoggedUser().getRole().compareTo("coach") == 0) {
+        if (appflow.getLoggedUser().getRole().compareTo("coach") == 0) {
+        	do {
 				System.out.println("1- Add new player to the system\n");
 				System.out.println("2- Create new squad\n");
 				/*...view squad score option...*/
@@ -163,7 +163,11 @@ public class AppManager {
 						break;
 				}
 			}
-			else{
+        	while(option.compareTo("3") != 0);
+        }
+			
+        else{
+        	do {
 				System.out.println("1- Add new event\n");
                 System.out.println("2- Add new admin\n");
                 System.out.println("3- Add new player to the system\n");
@@ -193,8 +197,8 @@ public class AppManager {
 						break;
 				}
 			}
+        	while(option.compareTo("5") != 0);
 		}
-        while(option.compareTo("3") != 0 && option.compareTo("5") != 0);
         
         scanner.close();
         
