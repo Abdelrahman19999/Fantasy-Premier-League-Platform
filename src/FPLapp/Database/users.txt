@@ -10,14 +10,14 @@ rob@rob.rob
 robrob
 coach
 Fulham
-false
+true
 1
 hob
 hob@hob.hob
 hobhob
 coach
 Liverpool
-false
+true
 2
 omar ahmed
 omar@yahoo.com

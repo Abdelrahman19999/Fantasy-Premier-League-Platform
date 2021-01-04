@@ -1,17 +1,9 @@
 package FPLapp;
 
-import FPLapp.Player.Player;
-import FPLapp.Player.PlayerDao;
-import FPLapp.Player.PlayerDaoFile;
-import FPLapp.Player.Position;
-import FPLapp.Squad.Squad;
-import FPLapp.Squad.SquadDao;
-import FPLapp.Squad.SquadDaoFile;
-import FPLapp.User.User;
-import FPLapp.User.UserDao;
-import FPLapp.User.UserDaoFile;
-
-import java.util.Scanner;
+import FPLapp.Player.*;
+import FPLapp.Squad.*;
+import FPLapp.User.*;
+import java.util.ArrayList;
 
 public class AppFlow {
 
@@ -24,42 +16,17 @@ public class AppFlow {
 		loggedUser = user;
 	}
 
-	public void addSquad() {
-		if(loggedUser.HasSquad()){
-			System.out.println("User already has one squad!");
-			return;
+	public void addSquad(int[] IdsList) {
+		loggedUser.setHasSquad("true");
+		Squad squad = new Squad();
+		SquadManager squadManager = new SquadManager(squad ,loggedUser);
+		for(int i = 0; i < 15; i++){
+			squadManager.addPlayer(playersList.getAllPlayers().get(IdsList[i]));
 		}
-		else{
-			loggedUser.setHasSquad("true");
-			Squad squad = new Squad();
-			for(Player player : playersList.getAllPlayers()){
-				System.out.println(player.getID() + "-" + player.getName() + "("+player.getPos()+")");
-			}
-			for(int i = 0; i < 15; i++){
-				System.out.println("Enter player ("+(i+1)+") ID to add to your squad: ");
-				Scanner scanner = new Scanner(System.in);
-				int id = -1;
-				try {
-					id = Integer.parseInt(scanner.nextLine());
-				}
-				catch (Exception e){
-					System.out.println("Please enter a valid number");
-				}
-				while(!squad.addPlayer(playersList.getAllPlayers().get(id))){
-					System.out.println("Cannot add player, please choose another player");
-					try {
-						id = Integer.parseInt(scanner.nextLine());
-					}
-					catch (Exception ignored){ }
-				}
-			}
-			squad.setOwner(loggedUser.getEmail());
-			squad.setName(loggedUser.getName() + "'s Squad");
-			squadDao = new SquadDaoFile();
-			squadDao.addSquad(squad.getOwner(), squad.getName(), squad.getInitValue(), squad.getPlayers());
-			UserDao userDao = new UserDaoFile();
-			userDao.updateUser(loggedUser);
-		}
+		squadDao = new SquadDaoFile();
+		squadDao.addSquad(squad.getOwner(), squad.getName(), squad.getInitValue(), squad.getPlayers());
+		UserDao userDao = new UserDaoFile();
+		userDao.updateUser(loggedUser);
 	}
 	
 	public boolean addNewPlayer(String Name, String Nationality, String pos , String Club , int Cost)
@@ -95,4 +62,11 @@ public class AppFlow {
 		this.loggedUser = loggedUser;
 	}
 
+	public boolean canAddSquad(){
+		return !loggedUser.HasSquad();
+	}
+
+	public ArrayList<Player> getPlayersList(){
+		return playersList.getAllPlayers();
+	}
 }

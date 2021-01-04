@@ -34,3 +34,39 @@ Arnold	DF
 Zaha	MF
 Lampty	DF
 Kante	MF
+hob@hob.hob
+hob's Squad
+73.0
+Cavani	FW
+Son	MF
+Bamford	FW
+Chilwell	DF
+De Gea	GK
+Salah	MF
+Fernandes	MF
+Justin	DF
+Cresswell	DF
+McCarthy	GK
+Wilson	FW
+Arnold	DF
+Zaha	MF
+Lampty	DF
+Kante	MF
+rob@rob.rob
+Rob's Squad
+72.0
+Son	MF
+Bamford	FW
+Chilwell	DF
+De Gea	GK
+Salah	MF
+Fernandes	MF
+Justin	DF
+Cresswell	DF
+McCarthy	GK
+Wilson	FW
+Arnold	DF
+Zaha	MF
+Lampty	DF
+Kante	MF
+Ings	FW

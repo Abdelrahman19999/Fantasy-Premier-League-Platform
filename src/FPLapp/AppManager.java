@@ -1,6 +1,9 @@
 package FPLapp;
 
+import FPLapp.Player.Player;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AppManager {
@@ -18,7 +21,53 @@ public class AppManager {
 		catch (IOException | InterruptedException ex) {
 		}
 	}
-    
+
+	public static void squadInput(AppFlow appflow , Scanner scanner){
+        if(appflow.canAddSquad()) {
+            ArrayList<Player> pList = appflow.getPlayersList();
+            for(int i = 0; i < pList.size() ; i++){
+                System.out.println(pList.get(i).getID() + "-" + pList.get(i).getName() + "("+pList.get(i).getPos()+")");
+            }
+            int[] IDsList = new int[15];
+            boolean invalidInput = false;
+            for(int i = 0; i < 15; i++){
+                if(invalidInput){
+                    System.out.println("**..Invalid ID number, please try again..**");
+                    i--;
+                    invalidInput = false;
+                }
+                System.out.println("Enter player ("+(i+1)+") ID to add to your squad: ");
+                try {
+                    IDsList[i] = Integer.parseInt(scanner.nextLine());
+                }
+                catch (Exception e){
+                    invalidInput = true;
+                }
+            }
+            appflow.addSquad(IDsList);
+            System.out.println("Squad added successfully!\n");
+        }
+        else
+            System.out.println("User already has one squad!\n");
+    }
+
+    public static void playerInput(AppFlow appflow, Scanner scanner){
+        System.out.println("Name: ");
+        String name = scanner.nextLine();
+        System.out.println("Nationality: ");
+        String nationality = scanner.nextLine();
+        System.out.println("Club: ");
+        String club = scanner.nextLine();
+        System.out.println("Position (GK - DF - FW - MF): ");
+        String pos = scanner.nextLine();
+        System.out.println("Initial Cost: ");
+        int cost = Integer.parseInt(scanner.nextLine());
+        if (appflow.addNewPlayer(name, nationality, pos, club, cost)) {
+            System.out.println("Player successfully added!\n\n");
+        } else {
+            System.out.println("Invalid info.\n\n");
+        }
+    }
     public static void run(){
     	
     	authentic = new Authenticator();
@@ -102,24 +151,10 @@ public class AppManager {
 
 				switch (option) {
 					case "1":
-						System.out.println("Name: ");
-						String name = scanner.nextLine();
-						System.out.println("Nationality: ");
-						String nationality = scanner.nextLine();
-						System.out.println("Club: ");
-						String club = scanner.nextLine();
-						System.out.println("Position (GK - DF - FW - MF): ");
-						String pos = scanner.nextLine();
-						System.out.println("Initial Cost: ");
-						int cost = Integer.parseInt(scanner.nextLine());
-						if (appflow.addNewPlayer(name, nationality, pos, club, cost)) {
-							System.out.println("Player successfully added!\n\n");
-						} else {
-							System.out.println("Invalid info.\n\n");
-						}
+						playerInput(appflow, scanner);
 						break;
 					case "2":
-						appflow.addSquad();
+                        squadInput(appflow, scanner);
 						break;
 					case "3":
 						break;
@@ -130,8 +165,10 @@ public class AppManager {
 			}
 			else{
 				System.out.println("1- Add new event\n");
-				System.out.println("2- Add new admin\n");
-				System.out.println("3- Exit\n\n");
+                System.out.println("2- Add new admin\n");
+                System.out.println("3- Add new player to the system\n");
+                System.out.println("4- Create new squad\n");
+				System.out.println("5- Exit\n\n");
 				System.out.println("Enter your choice: ");
 				option = scanner.nextLine();
 				switch(option){
@@ -144,14 +181,20 @@ public class AppManager {
 						appflow.addNewAdmin(email);
 						break;
 					case "3":
-						break;
+                        playerInput(appflow, scanner);
+                        break;
+                    case "4":
+                        squadInput(appflow, scanner);
+                        break;
+                    case "5":
+                        break;
 					default:
 						System.out.println("Invalid option.\n");
 						break;
 				}
 			}
 		}
-        while(option.compareTo("3") != 0);
+        while(option.compareTo("3") != 0 && option.compareTo("5") != 0);
         
         scanner.close();
         

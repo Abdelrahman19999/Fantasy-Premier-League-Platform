@@ -1,7 +1,5 @@
 package FPLapp.Squad;
-import FPLapp.Player.Player;
-import FPLapp.Player.PlayerDao;
-import FPLapp.Player.PlayerDaoFile;
+import FPLapp.Player.*;
 
 import java.util.ArrayList;
 
@@ -13,7 +11,7 @@ public class Squad {
     private int ID;
     private ArrayList<Player> players = new ArrayList<>();
 
-    protected boolean isApplicable(Player p){
+    /*protected boolean isApplicable(Player p){
         if(p.getCost() + initValue > totalValue)
             return false;
         else if (players.size() >= 15)
@@ -57,7 +55,7 @@ public class Squad {
         }
         else
             return false;
-    }
+    }*/
     protected void reloadPlayer(Player p){
         players.add(p);
     }
@@ -71,7 +69,7 @@ public class Squad {
     public void removePlayer(Player p){
         players.remove(p);
     }
-    public boolean replacePlayer(Player pold, Player pnew){
+    /*public boolean replacePlayer(Player pold, Player pnew){
         removePlayer(pold);
         if(addPlayer(pnew))
             return true;
@@ -79,7 +77,7 @@ public class Squad {
             addPlayer(pold);
             return false;
         }
-    }
+    }*/
 
     public void setName(String name) {
         this.name = name;
