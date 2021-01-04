@@ -1,6 +1,6 @@
 package FPLapp.Event;
 
-public interface EventObserver {
-	   public Event event;
+public abstract class EventObserver {
+	   protected Event event;
 	   public abstract void update();
 	}
