@@ -35,7 +35,7 @@ public class SquadDaoFile implements SquadDao{
         {
             Squads.remove(squad.getID());
             int size = Squads.size();
-        	for(int id = 1; id <= size; id++)
+        	for(int id = 0; id < size; id++)
         	{
         		Squads.get(id).setID(id);
         	}
