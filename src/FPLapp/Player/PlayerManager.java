@@ -1,5 +1,12 @@
 package FPLapp.Player;
 
-public class PlayerManager {
+import FPLapp.Event.EventObserver;
+
+public class PlayerManager extends EventObserver {
+
+	@Override
+	public void update() {
+		
+	}
 
 }
