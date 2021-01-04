@@ -8,8 +8,6 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
-
 public class PlayerDaoFile implements PlayerDao{
 
 	private ArrayList<Player> Players;
