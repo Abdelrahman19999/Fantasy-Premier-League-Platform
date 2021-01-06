@@ -13,7 +13,7 @@ public class myPair<T1, T2>
     this.p2 = b;
   }
   
-  myPair<T1, T2> getValue()
+  public myPair<T1, T2> getValue()
   {
     return this;
   }
