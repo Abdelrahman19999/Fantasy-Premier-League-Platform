@@ -2,8 +2,8 @@ package FPLapp.Utility;
 
 public class myPair<T1, T2> 
 {
-  T1 first; 
-  T2 second;
+  public T1 first; 
+  public T2 second;
   
   public myPair() {}
   
