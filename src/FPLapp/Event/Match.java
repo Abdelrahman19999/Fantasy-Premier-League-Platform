@@ -52,6 +52,7 @@ public class Match {
 	public void end()
 	{
 		ongoing = false;
+		participants.clear();
 	}
 
 }
