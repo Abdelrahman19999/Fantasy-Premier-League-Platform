@@ -22,7 +22,7 @@ public enum EventEnum {
 	DEF_TWO_CGOAL(-1),
 	YELLOW_CARD(-1),
 	RED_CARD(-3),
-	OWM_GOAL(-2);
+	OWN_GOAL(-2);
 	
 	private int action;
 	
