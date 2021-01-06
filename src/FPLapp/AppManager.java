@@ -1,6 +1,7 @@
 package FPLapp;
 
 import FPLapp.Player.Player;
+import FPLapp.User.Authenticator;
 
 import java.io.IOException;
 import java.util.ArrayList;

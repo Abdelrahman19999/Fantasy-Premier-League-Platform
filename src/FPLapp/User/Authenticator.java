@@ -1,8 +1,4 @@
-package FPLapp;
-
-import FPLapp.User.User;
-import FPLapp.User.UserDao;
-import FPLapp.User.UserDaoFile;
+package FPLapp.User;
 
 public class Authenticator {
 	

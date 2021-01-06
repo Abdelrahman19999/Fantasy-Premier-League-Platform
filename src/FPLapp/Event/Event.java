@@ -1,10 +1,14 @@
 package FPLapp.Event;
 
 import java.util.ArrayList;
+import FPLapp.Player.Player;
+import FPLapp.Utility.myPair;
 
 public class Event {
 	int gameWeek;
-	private ArrayList<EventObserver> observers;
+	Match match;
+	myPair<EventEnum, Player> event = new myPair<EventEnum, Player>();
+	private ArrayList<EventObserver> observers = new ArrayList<EventObserver>();
 	
 	public void registerObserver(EventObserver eventOb)
 	{
@@ -16,11 +20,53 @@ public class Event {
 		observers.remove(observers.indexOf(eventOb));
 	}
 	
-	public void notifyObserver()
+	public myPair<EventEnum, Player> getEvent()
 	{
-		for(EventObserver ob : observers)
+		return event;
+	}
+	
+	public void createEvent(EventEnum evenum, Player player)
+	{
+		event.setValue(evenum, player);
+		notifyObservers();
+	}
+	
+	private void notifyObservers()
+	{
+		for(EventObserver observer : observers)
 		{
-			ob.update();
+			observer.update();
+		}
+	}
+	
+	public void createMatch(String team1, String team2)
+	{
+		match = new Match(team1, team2);
+	}
+	
+	public Boolean startMatch()
+	{
+		try
+		{
+			match.start();
+			return true;
+		}
+		catch(Exception E)
+		{
+			return false;
+		}
+	}
+	
+	public Boolean endMatch()
+	{
+		try
+		{
+			match.end();
+			return true;
+		}
+		catch(Exception E)
+		{
+			return false;
 		}
 	}
 	
