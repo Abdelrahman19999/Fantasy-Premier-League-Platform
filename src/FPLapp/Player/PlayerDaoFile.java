@@ -32,7 +32,7 @@ public class PlayerDaoFile implements PlayerDao{
     	Players.add(player);
     }
 
-	public void addPlayer(String Name, String Nationality, Position pos , String Club , int Cost , int ID)
+	public void addPlayer(String Name, String Nationality, PositionEnum pos , String Club , int Cost , int ID)
 	{
 		Player player = new Player();
 		player.setName(Name);
@@ -64,15 +64,15 @@ public class PlayerDaoFile implements PlayerDao{
         }
     }
 
-	public Position pos_value(String s) {
+	public PositionEnum pos_value(String s) {
 
-		if(s.compareTo("DF") == 0)	return  Position.DF ;
+		if(s.compareTo("DF") == 0)	return  PositionEnum.DF ;
 
-		if(s.compareTo("FW") == 0)	return  Position.FW ;
+		if(s.compareTo("FW") == 0)	return  PositionEnum.FW ;
 
-		if(s.compareTo("GK") == 0)	return  Position.GK ;
+		if(s.compareTo("GK") == 0)	return  PositionEnum.GK ;
 
-		if(s.compareTo("MF") == 0)	return  Position.MF ;
+		if(s.compareTo("MF") == 0)	return  PositionEnum.MF ;
 		
 		else return null;
 	}

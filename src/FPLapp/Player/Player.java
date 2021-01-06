@@ -3,7 +3,7 @@ package FPLapp.Player;
 public class Player {
 	private String Name;
 	private String Nationality;
-	private Position pos;
+	private PositionEnum pos;
 	private String Club;
 	private int Cost;
 	private int ID;
@@ -23,11 +23,11 @@ public class Player {
 		this.Nationality = nationality;
 	}
 
-	public Position getPos() {
+	public PositionEnum getPos() {
 		return pos;
 	}
 
-	public void setPos(Position pos) {
+	public void setPos(PositionEnum pos) {
 		this.pos = pos;
 	}
 

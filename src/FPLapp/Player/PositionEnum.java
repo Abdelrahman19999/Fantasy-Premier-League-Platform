@@ -1,5 +1,5 @@
 package FPLapp.Player;
 
-public enum Position {
+public enum PositionEnum {
 	GK, DF, MF, FW;
 }

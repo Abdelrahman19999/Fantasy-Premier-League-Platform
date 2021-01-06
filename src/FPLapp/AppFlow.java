@@ -34,7 +34,7 @@ public class AppFlow {
 		Player player = new Player();
 		player.setName(Name);
 		player.setNationality(Nationality);
-		Position position = playersList.pos_value(pos);
+		PositionEnum position = playersList.pos_value(pos);
 		if(position == null) {System.out.println("null"); return false;}
 		else player.setPos(position);
 		player.setCost(Cost);

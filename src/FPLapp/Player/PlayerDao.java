@@ -7,6 +7,6 @@ public interface PlayerDao {
      void updatePlayer(Player player);
      void addPlayer(Player player);
      boolean deletePlayer(Player player);
-     void addPlayer(String Name, String Nationality, Position pos , String Club , int Cost , int ID);
-     Position pos_value(String s);
+     void addPlayer(String Name, String Nationality, PositionEnum pos , String Club , int Cost , int ID);
+     PositionEnum pos_value(String s);
 }
