@@ -9,7 +9,7 @@ public class AppFlow {
 
 
 	private User loggedUser;
-	private PlayerDao playersList = new PlayerDaoFile();
+	private PlayerDao playersDAO = new PlayerDaoFile();
 	private SquadDao squadDao;
 	public AppFlow(User user)
 	{
@@ -21,7 +21,7 @@ public class AppFlow {
 		Squad squad = new Squad();
 		SquadManager squadManager = new SquadManager(squad ,loggedUser);
 		for(int i = 0; i < 15; i++){
-			squadManager.addPlayer(playersList.getAllPlayers().get(IdsList[i]));
+			squadManager.addPlayer(playersDAO.getAllPlayers().get(IdsList[i]));
 		}
 		squadDao = new SquadDaoFile();
 		squadDao.addSquad(squad.getOwner(), squad.getName(), squad.getInitValue(), squad.getPlayers());
@@ -34,12 +34,12 @@ public class AppFlow {
 		Player player = new Player();
 		player.setName(Name);
 		player.setNationality(Nationality);
-		PositionEnum position = playersList.pos_value(pos);
+		PositionEnum position = playersDAO.pos_value(pos);
 		if(position == null) {System.out.println("null"); return false;}
 		else player.setPos(position);
 		player.setCost(Cost);
-		int newID = playersList.getAllPlayers().size();
-		playersList.addPlayer(Name, Nationality, position, Club, Cost, newID);
+		int newID = playersDAO.getAllPlayers().size();
+		playersDAO.addPlayer(Name, Nationality, position, Club, Cost, newID);
 		return true;
 	}
 
@@ -67,6 +67,6 @@ public class AppFlow {
 	}
 
 	public ArrayList<Player> getPlayersList(){
-		return playersList.getAllPlayers();
+		return playersDAO.getAllPlayers();
 	}
 }
