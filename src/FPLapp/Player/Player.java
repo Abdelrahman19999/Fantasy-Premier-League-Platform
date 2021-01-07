@@ -6,6 +6,7 @@ public class Player {
 	private PositionEnum pos;
 	private String Club;
 	private int Cost;
+	private int Points;
 	private int ID;
 	public String getName() {
 		return Name;
@@ -53,5 +54,15 @@ public class Player {
 
 	public void setID(int id) {
 		this.ID = id;
+	}
+	
+	public int getPoints()
+	{
+		return Points;
+	}
+	
+	public void setPoints(int points)
+	{
+		Points = points;
 	}
 }

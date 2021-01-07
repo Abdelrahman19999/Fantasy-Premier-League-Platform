@@ -16,7 +16,7 @@ public class PlayerDaoFile implements PlayerDao{
         Players = new ArrayList<Player>();
 		loadPlayers();
 	}
-
+	
 	@Override
     public ArrayList<Player> getAllPlayers() {
         return Players;
@@ -25,6 +25,7 @@ public class PlayerDaoFile implements PlayerDao{
 	@Override
     public void updatePlayer(Player player) {
     	Players.set(player.getID(), player);
+    	savePlayers();
     }
 
 	@Override
@@ -40,6 +41,7 @@ public class PlayerDaoFile implements PlayerDao{
 		player.setPos(pos);
 		player.setClub(Club);
 		player.setCost(Cost);
+		player.setPoints(0);
 		player.setID(ID);
 		Players.add(player);
 		savePlayers();
@@ -90,6 +92,7 @@ public class PlayerDaoFile implements PlayerDao{
 				player.setPos(pos_value(reader.nextLine()));
 				player.setClub(reader.nextLine());
 				player.setCost(Integer.parseInt(reader.nextLine()));
+				player.setPoints(Integer.parseInt(reader.nextLine()));
 				player.setID(Integer.parseInt(reader.nextLine()));
 				addPlayer(player);
 			}
@@ -111,6 +114,7 @@ public class PlayerDaoFile implements PlayerDao{
 				fileWriter.write(player.getPos().toString() + "\n");
 				fileWriter.write(player.getClub() + "\n");
 				fileWriter.write(player.getCost() + "\n");
+				fileWriter.write(player.getPoints() + "\n");
 				fileWriter.write(player.getID() + "\n");
 			}
 			fileWriter.close();

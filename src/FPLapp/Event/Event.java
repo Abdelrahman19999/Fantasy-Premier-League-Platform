@@ -6,8 +6,8 @@ import FPLapp.Utility.myPair;
 
 public class Event {
 	int gameWeek;
-	Match match;
-	myPair<EventEnum, Player> event = new myPair<EventEnum, Player>();
+	private Match match;
+	private myPair<EventEnum, Player> state = new myPair<EventEnum, Player>();
 	private ArrayList<EventObserver> observers = new ArrayList<EventObserver>();
 	
 	public void registerObserver(EventObserver eventOb)
@@ -20,15 +20,30 @@ public class Event {
 		observers.remove(observers.indexOf(eventOb));
 	}
 	
-	public myPair<EventEnum, Player> getEvent()
+	public myPair<EventEnum, Player> getState()
 	{
-		return event;
+		return state;
 	}
 	
-	public void createEvent(EventEnum evenum, Player player)
+	public Boolean createEvent(EventEnum evenum, Player player)
 	{
-		event.setValue(evenum, player);
-		notifyObservers();
+		try 
+		{
+			if(match.getOngoing())
+			{
+				state.setValue(evenum, player);
+				notifyObservers();
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
 	}
 	
 	private void notifyObservers()
@@ -70,7 +85,16 @@ public class Event {
 		}
 	}
 	
-	public void getPlayerInfo() {};
-	public void getMatchInfo() {};
+	public ArrayList<Player> getMatchPlayers() {
+		if(match.getOngoing())
+		{
+			return match.getParticipants();
+		}
+		else return null;
+	};
+	
+	public Boolean getMatchState() {
+		return match.getOngoing();
+	};
 	
 }
