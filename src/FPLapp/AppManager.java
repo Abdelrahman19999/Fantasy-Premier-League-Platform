@@ -1,6 +1,5 @@
 package FPLapp;
 
-import FPLapp.Event.EventEnum;
 import FPLapp.Player.Player;
 import FPLapp.User.Authenticator;
 

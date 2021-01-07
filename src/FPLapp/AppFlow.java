@@ -108,7 +108,7 @@ public class AppFlow {
 	public void addSquad(int[] IdsList) {
 		loggedUser.setHasSquad("true");
 		Squad squad = new Squad();
-		SquadManager squadManager = new SquadManager(squad ,loggedUser);
+		SquadCreator squadManager = new SquadCreator(squad ,loggedUser);
 		for(int i = 0; i < 15; i++){
 			squadManager.addPlayer(playersDAO.getAllPlayers().get(IdsList[i]));
 		}

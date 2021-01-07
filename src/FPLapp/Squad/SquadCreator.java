@@ -3,9 +3,9 @@ package FPLapp.Squad;
 import FPLapp.Player.*;
 import FPLapp.User.*;
 
-public class SquadManager {
+public class SquadCreator {
     private Squad squad;
-    public SquadManager(Squad squad , User user){
+    public SquadCreator(Squad squad , User user){
         squad.setOwner(user.getEmail());
         squad.setName(user.getName() + "'s Squad");
         this.squad = squad;
