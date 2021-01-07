@@ -10,6 +10,11 @@ public class Event {
 	private myPair<EventEnum, Player> state = new myPair<EventEnum, Player>();
 	private ArrayList<EventObserver> observers = new ArrayList<EventObserver>();
 	
+	public Event(int _gameWeek)
+	{
+		gameWeek = _gameWeek;
+	}
+	
 	public void registerObserver(EventObserver eventOb)
 	{
 		observers.add(eventOb);
@@ -94,7 +99,14 @@ public class Event {
 	};
 	
 	public Boolean getMatchState() {
-		return match.getOngoing();
+		try
+		{
+			return match.getOngoing();
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
 	};
 	
 }

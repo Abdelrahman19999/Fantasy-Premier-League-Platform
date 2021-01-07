@@ -1,9 +1,12 @@
 package FPLapp;
 
+import FPLapp.Event.Event;
+import FPLapp.Event.EventEnum;
 import FPLapp.Player.*;
 import FPLapp.Squad.*;
 import FPLapp.User.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class AppFlow {
 
@@ -11,9 +14,95 @@ public class AppFlow {
 	private User loggedUser;
 	private PlayerDao playersDAO = new PlayerDaoFile();
 	private SquadDao squadDao;
+	private Event event;
+	private EventEnum evenum;
+	private Scanner sc;
+	
 	public AppFlow(User user)
 	{
 		loggedUser = user;
+	}
+	
+	public void initiateEvent(int gameweek)
+	{
+		event = new Event(gameweek);
+		new PlayerManager(event);
+	}
+	
+	public void createMatch(String team1, String team2)
+	{
+		event.createMatch(team1, team2);
+	}
+	
+	public Boolean startMatch()
+	{
+		if(event.getMatchState() == false)
+		{
+			if(event.startMatch())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public Boolean endMatch()
+	{
+		if(event.getMatchState() == true)
+		{
+			if(event.endMatch())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public Boolean createEvent()
+	{
+		if(event.getMatchState() == false) return false;
+		sc = new Scanner(System.in);
+		int i = 1;
+		for(EventEnum events : EventEnum.values())
+		{
+			System.out.println(i + "- " + events.getName());
+			i++;
+		}
+		System.out.println("Enter your choice: ");
+		int choice = Integer.parseInt(sc.nextLine());
+		if(choice < 1 || choice > 21) return false;
+		for(EventEnum events : EventEnum.values())
+		{
+			if(events.getOrder() == (choice-1))
+			{
+				evenum = events;
+			}
+		}
+		ArrayList<Player> participants = event.getMatchPlayers();
+		for(i = 0; i < participants.size(); i++)
+		{
+             System.out.println((i+1) + "- " + participants.get(i).getName() + "("+participants.get(i).getPos()+")");
+        }
+		System.out.println("Enter player to associate with event: ");
+		choice = Integer.parseInt(sc.nextLine());
+		if(choice < 1 || choice > participants.size()) return false;
+		Player player = participants.get(choice-1);
+		event.createEvent(evenum, player);
+		return true;
 	}
 
 	public void addSquad(int[] IdsList) {

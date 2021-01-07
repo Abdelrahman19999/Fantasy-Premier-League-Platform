@@ -1,5 +1,6 @@
 package FPLapp;
 
+import FPLapp.Event.EventEnum;
 import FPLapp.Player.Player;
 import FPLapp.User.Authenticator;
 
@@ -76,6 +77,7 @@ public class AppManager {
         Scanner scanner = new Scanner(System.in);
         boolean allowed = false;
         String option;
+        String nestedOption;
         
         while(!allowed)
         {
@@ -178,7 +180,73 @@ public class AppManager {
 				option = scanner.nextLine();
 				switch(option){
 					case "1":
-						//appflow.addEvent();
+						System.out.println("Enter game week: ");
+						int gameweek;
+						try 
+						{
+							gameweek = Integer.parseInt(scanner.nextLine());
+						}
+						catch(Exception e)
+						{
+							break;
+						}
+						appflow.initiateEvent(gameweek);
+						do
+						{
+							System.out.println("\n1- Create a match\n");
+			                System.out.println("2- Start match\n");
+			                System.out.println("3- Add event to ongoing match\n");
+			                System.out.println("4- End match\n");
+							System.out.println("5- Return\n\n");
+							System.out.println("Enter your choice: ");
+							nestedOption = scanner.nextLine();
+							switch(nestedOption)
+							{
+								case "1":
+									System.out.println("Enter first team: ");
+									String team1 = scanner.nextLine();
+									System.out.println("Enter second team: ");
+									String team2 = scanner.nextLine();
+									appflow.createMatch(team1, team2);
+									break;
+								case "2":
+									if(appflow.startMatch())
+									{
+										System.out.println("Match started!");
+									}
+									else
+									{
+										System.out.println("Match is already in progress, or no match has been created!");
+									}
+									break;
+								case "3":
+			                        if(appflow.createEvent())
+			                        {
+			                        	System.out.println("Event created successfully!");
+			                        }
+			                        else
+			                        {
+			                        	System.out.println("Invalid input in event creation, or invalid match state!");
+			                        }
+			                        break;
+			                    case "4":
+			                    	if(appflow.endMatch())
+									{
+										System.out.println("Match ended!");
+									}
+									else
+									{
+										System.out.println("Match has already ended, or no match has been created!");
+									}
+			                        break;
+			                    case "5":
+			                        break;
+								default:
+									System.out.println("Invalid option.\n");
+									break;
+							}
+						}
+						while(nestedOption.compareTo("5") != 0);
 						break;
 					case "2":
 						System.out.println("please enter user email:");
