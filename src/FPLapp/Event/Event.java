@@ -5,7 +5,7 @@ import FPLapp.Player.Player;
 import FPLapp.Utility.myPair;
 
 public class Event {
-	int gameWeek;
+	private int gameWeek;
 	private Match match;
 	private myPair<EventEnum, Player> state = new myPair<EventEnum, Player>();
 	private ArrayList<EventObserver> observers = new ArrayList<EventObserver>();
@@ -88,6 +88,16 @@ public class Event {
 		{
 			return false;
 		}
+	}
+	
+	public void setGameweek(int gw)
+	{
+		gameWeek = gw;
+	}
+	
+	public int getGameweek()
+	{
+		return gameWeek;
 	}
 	
 	public ArrayList<Player> getMatchPlayers() {

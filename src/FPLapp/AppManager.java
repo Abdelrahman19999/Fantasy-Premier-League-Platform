@@ -74,6 +74,7 @@ public class AppManager {
     	authentic = new Authenticator();
     	
         Scanner scanner = new Scanner(System.in);
+        Scanner scanInt = new Scanner(System.in);
         boolean allowed = false;
         String option;
         String nestedOption;
@@ -146,8 +147,8 @@ public class AppManager {
         	do {
 				System.out.println("1- Add new player to the system\n");
 				System.out.println("2- Create new squad\n");
-				/*...view squad score option...*/
-				System.out.println("3- Exit\n\n");
+				System.out.println("3- View squad score\n");
+				System.out.println("4- Exit\n\n");
 				System.out.println("Enter your choice: ");
 				option = scanner.nextLine();
 
@@ -159,13 +160,18 @@ public class AppManager {
                         squadInput(appflow, scanner);
 						break;
 					case "3":
+						System.out.println("Enter gameweek: ");
+						int gameweek = scanInt.nextInt();
+						appflow.showSquadScore(gameweek);
+						break;
+					case "4":
 						break;
 					default:
 						System.out.println("Invalid option.\n");
 						break;
 				}
 			}
-        	while(option.compareTo("3") != 0);
+        	while(option.compareTo("4") != 0);
         }
 			
         else{
@@ -174,7 +180,8 @@ public class AppManager {
                 System.out.println("2- Add new admin\n");
                 System.out.println("3- Add new player to the system\n");
                 System.out.println("4- Create new squad\n");
-				System.out.println("5- Exit\n\n");
+                System.out.println("5- View squad score\n");
+				System.out.println("6- Exit\n\n");
 				System.out.println("Enter your choice: ");
 				option = scanner.nextLine();
 				switch(option){
@@ -259,13 +266,18 @@ public class AppManager {
                         squadInput(appflow, scanner);
                         break;
                     case "5":
+                    	System.out.println("Enter gameweek: ");
+						int gweek = scanInt.nextInt();
+						appflow.showSquadScore(gweek);
+						break;
+                    case "6":
                         break;
 					default:
 						System.out.println("Invalid option.\n");
 						break;
 				}
 			}
-        	while(option.compareTo("5") != 0);
+        	while(option.compareTo("6") != 0);
 		}
         
         scanner.close();

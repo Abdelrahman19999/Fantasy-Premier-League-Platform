@@ -4,6 +4,9 @@ import FPLapp.Event.Event;
 import FPLapp.Event.EventEnum;
 import FPLapp.Player.*;
 import FPLapp.Squad.*;
+import FPLapp.Squad.Score.Score;
+import FPLapp.Squad.Score.ScoreDao;
+import FPLapp.Squad.Score.ScoreDaoFile;
 import FPLapp.User.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -14,6 +17,7 @@ public class AppFlow {
 	private User loggedUser;
 	private PlayerDao playersDAO = new PlayerDaoFile();
 	private SquadDao squadDao;
+	private ScoreDao scoreDAO = new ScoreDaoFile();
 	private Event event;
 	private EventEnum evenum;
 	private Scanner sc;
@@ -27,6 +31,7 @@ public class AppFlow {
 	{
 		event = new Event(gameweek);
 		new PlayerManager(event);
+		new SquadManager(event);
 	}
 	
 	public void createMatch(String team1, String team2)
@@ -157,5 +162,20 @@ public class AppFlow {
 
 	public ArrayList<Player> getPlayersList(){
 		return playersDAO.getAllPlayers();
+	}
+
+	public void showSquadScore(int gameweek) {
+		ArrayList<Score> Scores = scoreDAO.getAllScores();
+		for(Score scr : Scores)
+		{
+			String owner = scr.getOwner();
+			if(scr.getGameweek() == gameweek && owner.compareTo(loggedUser.getEmail()) == 0)
+			{
+				System.out.println("\nScore: " + scr.getScore() + "\n");
+				return;
+			}
+		}
+		System.out.println("\nYour squad hasn't participated in any events in this gameweek yet!\n");
+		
 	}
 }
