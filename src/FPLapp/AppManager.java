@@ -281,6 +281,7 @@ public class AppManager {
 		}
         
         scanner.close();
+        scanInt.close();
         
     }
     
